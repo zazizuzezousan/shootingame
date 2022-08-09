@@ -69,3 +69,36 @@ body{
     background: lightslategray;
     border-radius: 1px;
 }
+#controlPanel{
+    width: 80%;
+    max-width: 500px;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    margin-top: 16px;
+    display: none;
+}
+#leftB{
+    width: 20%;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    margin-right: 3%;
+    margin-left: 7%;
+    background: skyblue;
+    font-size: 40px;
+}
+#rightB{
+    width: 20%;
+    height: 50px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-left: 3%;
+    background: skyblue;
+    font-size: 40px;
+}
+#shotB{
+    width: 40%;
+    height: 50px;
+    background: lightpink;
+    font-size: 40px;
+}

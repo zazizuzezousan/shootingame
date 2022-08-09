@@ -31,6 +31,11 @@ const esize = 50;
 let emovement = [];
 const AmountOfeMovement = 5;
 
+//スマホ用ボタンについて定義
+const leftB = document.getElementById("leftB");
+const rightB = document.getElementById("rightB");
+const shotB = document.getElementById("shotB");
+
 //その他の定義
 const start = document.getElementById("start");
 let game;
@@ -63,6 +68,50 @@ window.onload = function(){
             movementPermission = 0;
         }
     });
+    leftB.ontouchstart = function(){
+        movement = setInterval(function(){
+            if(spacecraftX >= minspacecraftX){
+                spacecraftX = spacecraftX - AmountOfscMovement;
+                gameDisplayCTX.clearRect(spacecraftX + AmountOfscMovement, gameDisplay.height - scsize, scsize, scsize);
+                gameDisplayCTX.fillRect(spacecraftX + AmountOfscMovement, gameDisplay.height - scsize, scsize, scsize);
+                gameDisplayCTX.drawImage(spacecraft, spacecraftX, gameDisplay.height - scsize, scsize, scsize);
+            }
+        },1);
+    }
+    rightB.ontouchstart = function(){
+        movement = setInterval(function(){
+            if(spacecraftX <= maxspacecraftX){
+                spacecraftX = spacecraftX + AmountOfscMovement;
+                gameDisplayCTX.clearRect(spacecraftX - AmountOfscMovement, gameDisplay.height - scsize, scsize, scsize);
+                gameDisplayCTX.fillRect(spacecraftX - AmountOfscMovement, gameDisplay.height - scsize, scsize, scsize);
+                gameDisplayCTX.drawImage(spacecraft, spacecraftX, gameDisplay.height - scsize, scsize, scsize);
+            }
+        },1);
+    }
+    leftB.ontouchmove = function(){
+        clearInterval(movement);
+    }
+    rightB.ontouchmove = function(){
+        clearInterval(movement);
+    }
+    shotB.addEventListener("click",function(){
+        if(bulletY <= -2 * bsize){
+            shotS.play();
+            bulletY = gameDisplay.height - scsize - bsize;
+            bulletX = spacecraftX;
+            gameDisplayCTX.drawImage(bullet, bulletX + scsize / 2 - bsize / 2, bulletY, bsize, 2 * bsize);
+            let upBullet = setInterval(function(){
+                gameDisplayCTX.clearRect(bulletX + scsize / 2 - bsize / 2, bulletY, bsize, 2 * bsize);
+                gameDisplayCTX.fillRect(bulletX + scsize / 2 - bsize / 2, bulletY, bsize, 2 * bsize + 1);
+                bulletY = bulletY - AmountOfbMovement;
+                gameDisplayCTX.drawImage(spacecraft, spacecraftX, gameDisplay.height - scsize, scsize, scsize);
+                gameDisplayCTX.drawImage(bullet, bulletX + scsize / 2 - bsize / 2, bulletY, bsize, 2 * bsize);
+                if(bulletY <= -2 * bsize){
+                    clearInterval(upBullet);
+                }
+            },100)
+        }
+    });
     document.addEventListener("keypress", shootBullets);
     start.addEventListener("click",function(){
         if(startstop == 0){
@@ -80,6 +129,10 @@ window.onload = function(){
             start.innerText = "start";
         }
     });
+    if(isSmartPhone()){
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("controlPanel").style.display = "block";
+    }
 };
 
 function scMovement(e){
@@ -182,3 +235,11 @@ function occurEnemy(Num){
         }
     },50);
 }
+
+function isSmartPhone() {
+    if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
