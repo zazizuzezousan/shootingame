@@ -10,7 +10,7 @@ enemy.src = "enemy.png";
 gameDisplayCTX.fillStyle = "#000033";
 
 //乗り物について定義
-const scsize = 100;
+const scsize = gameDisplay.width / 8;
 let spacecraftX = gameDisplay.width / 2 - scsize / 2;
 const minspacecraftX = - scsize / 2;
 const maxspacecraftX = gameDisplay.width - scsize / 2;
@@ -27,7 +27,7 @@ const AmountOfbMovement = 50;
 //敵について定義
 let appearedEnemy = [];
 let enemyNumber = 0;
-const esize = 50;
+const esize = scsize / 2;
 let emovement = [];
 const AmountOfeMovement = 5;
 
@@ -59,6 +59,10 @@ const again = document.getElementById("again");
 let gameoverColor = "red";
 
 window.onload = function(){
+    if(isSmartPhone()){
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("controlPanel").style.display = "block";
+    }
     gameDisplayCTX.fillRect(0,0,gameDisplay.width,gameDisplay.height);
     gameDisplayCTX.drawImage(spacecraft, spacecraftX, gameDisplay.height - scsize, scsize, scsize);
     document.addEventListener("keydown", scMovement);
@@ -129,10 +133,6 @@ window.onload = function(){
             start.innerText = "start";
         }
     });
-    if(isSmartPhone()){
-        document.getElementById("intro").style.display = "none";
-        document.getElementById("controlPanel").style.display = "block";
-    }
 };
 
 function scMovement(e){
