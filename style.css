@@ -1,0 +1,104 @@
+body{
+    overflow: hidden;
+}
+#gamePlay{
+    border: solid 5px brown;
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+#start{
+    display: block;
+    width: 200px;
+    height: 40px;
+    background-color: red;
+    border-radius: 40px;
+    font-size: 30px;
+    letter-spacing: 0.1em;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    margin-top: 50px;
+}
+#gameover{
+    width: 250px;
+    height: 500px;
+    transform: translateX(-50%);
+    position: fixed;
+    left: 50%;
+    top: 50px;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 3px black;
+    text-align: center;
+    display: none;
+}
+#gameover img{
+    width: 200px;
+    height: 200px;
+    background-color: #000033;
+    border: solid 10px #000033;
+}
+#gameover p{
+    text-align: left;
+    width: 220px;
+    margin-left: 15px;
+    font-weight: 500;
+}
+#gameover p span{
+    font-weight: 600;
+    color: blue;
+}
+#again{
+    width: 220px;
+    height: 44px;
+    background-color: skyblue;
+    border-radius: 5px;
+    font-size: 20px;
+}
+#intro{
+    width: fit-content;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    border: solid 3px black;
+    background: skyblue;
+    border-radius: 5px;
+    padding: 10px;
+    letter-spacing: 2px;
+}
+#intro span{
+    border: solid 2px black;
+    background: lightslategray;
+    border-radius: 1px;
+}
+#controlPanel{
+    width: 80%;
+    max-width: 500px;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    margin-top: 16px;
+    display: none;
+}
+#leftB{
+    width: 20%;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    margin-right: 3%;
+    margin-left: 7%;
+    background: skyblue;
+    font-size: 40px;
+}
+#rightB{
+    width: 20%;
+    height: 50px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-left: 3%;
+    background: skyblue;
+    font-size: 40px;
+}
+#shotB{
+    width: 40%;
+    height: 50px;
+    background: lightpink;
+    font-size: 40px;
+}
